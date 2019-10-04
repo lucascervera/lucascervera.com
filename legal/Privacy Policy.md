@@ -72,7 +72,7 @@ The Lucas Rodriguez Cervera website contains links to other websites. Our privac
 
 ## Changes to our privacy policy
 
-Lucas Rodriguez Cervera keeps its privacy policy under regular review and places any updates on this web page. This contract is managed with github. You can see all its versions in [github.com](https://github.com/Lucas Rodriguez Cervera-com/Lucas Rodriguez Cervera-legal).
+Lucas Rodriguez Cervera keeps its privacy policy under regular review and places any updates on this web page. This contract is managed with github. You can see all its versions in [github.com](https://github.com/lucascervera/lucascervera.com/blob/master/legal/Privacy%20Policy.md).
 
 ## How to contact us
 
