@@ -10,8 +10,8 @@ Fundador de 3 startups y 1 fundación en los campos de internet, software y empr
 - Email: lucas@lucascervera.com
 - LinkedIn: https://es.linkedin.com/in/lucascervera
 
-## Trayectoria
-- cogNNitive (2026): Desde septiembre de 2026. Framework de evolución del conocimiento que convierte información dispersa en una base estructurada y trazable en Markdown plano. — https://cognnitive.com
+## Proyectos
+- cogNNitive (2026): Software de gestión de la información con IA. — https://cognnitive.com
 - innV0 (2025): Plataforma especializada en la fase inicial del proceso de innovación. — https://innV0.com
 - Impulsar.ai (2023): Entrevistas a expertos en Inteligencia Artificial. — https://impulsar.ai
 - Plastilinn (2021): Modelado de negocios impulsado por Inteligencia Artificial. — https://plastilinn.com

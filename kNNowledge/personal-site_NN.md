@@ -3,7 +3,7 @@ level: 3
 parent_spec:
   name: "personal-site_V_0-1-0"
   url: "specs/bluepriNNts/personal-site/spec_NN.md"
-knowledge_version: "V_0-1-2"
+knowledge_version: "V_0-1-3"
 title: "Personal Site"
 ---
 
@@ -25,7 +25,7 @@ ubicacion:: España
 slug:: cognnitive
 nombre:: cogNNitive
 anio:: 2026
-descripcion:: Desde septiembre de 2026. Framework de evolución del conocimiento que convierte información dispersa en una base estructurada y trazable en Markdown plano.
+descripcion:: Software de gestión de la información con IA.
 url:: https://cognnitive.com
 
 ## NN Emprendimiento: innV0

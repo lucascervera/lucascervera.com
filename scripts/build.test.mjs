@@ -129,6 +129,24 @@ test("the Recursos section is gone from every generated output", () => {
   }
 });
 
+test("the projects section is labelled Proyectos everywhere", () => {
+  const out = tmp("proyectos");
+  try {
+    const { files } = build({ outDir: out });
+    for (const relative of files) {
+      const content = readFileSync(join(out, relative), "utf8");
+      assert.doesNotMatch(content, /Trayectoria/, `${relative} still says Trayectoria`);
+    }
+    const html = readFileSync(join(out, "index.html"), "utf8");
+    assert.match(html, /<section id="proyectos">/);
+    assert.match(html, /<h2>Proyectos<\/h2>/);
+    assert.match(html, /href="#proyectos"/);
+    assert.match(html, /Software de gestión de la información con IA/, "cogNNitive must carry its new description");
+  } finally {
+    rmSync(out, { recursive: true, force: true });
+  }
+});
+
 test("every local reference in the published page resolves on disk", () => {
   const html = readFileSync(join(ROOT, "index.html"), "utf8");
   const refs = [...html.matchAll(/(?:src|href)="([^"#]+)"/g)]

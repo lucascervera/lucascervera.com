@@ -123,7 +123,7 @@ function sortedVentures(model) {
 function renderNav(model) {
   const items = [
     ["#perfil", "Perfil"],
-    ["#trayectoria", "Trayectoria"],
+    ["#proyectos", "Proyectos"],
     ["#actividades", "Actividades"],
     ...(model.concepts.Galeria ?? []).map((el) => [
       `#${el.id.toLowerCase()}`,
@@ -238,8 +238,8 @@ function renderHtml(model) {
       </div>
     </section>
 
-    <section id="trayectoria">
-      <h2>Trayectoria</h2>
+    <section id="proyectos">
+      <h2>Proyectos</h2>
       <ul class="cards">
 ${renderVentures(model)}
       </ul>
@@ -464,7 +464,7 @@ ${perfil.resumen}
 - Email: ${perfil.email}
 - LinkedIn: ${perfil.linkedin ?? "No declarado"}
 
-## Trayectoria
+## Proyectos
 ${ventures}
 
 ## Actividades
@@ -489,7 +489,7 @@ function renderCatalog(model) {
     language: "es",
     sections: [
       { id: "perfil", title: "Perfil" },
-      { id: "trayectoria", title: "Trayectoria", count: (model.concepts.Emprendimiento ?? []).length },
+      { id: "proyectos", title: "Proyectos", count: (model.concepts.Emprendimiento ?? []).length },
       { id: "actividades", title: "Actividades", count: (model.concepts.Actividad ?? []).length },
       { id: "galerias", title: "Galerías", count: (model.concepts.Galeria ?? []).length },
       { id: "contacto", title: "Contacto" },
