@@ -22,6 +22,7 @@ relationship_types:
 # NN index
 
 * [[Perfil]]
+* [[Contexto]]
 * [[Emprendimiento]]
 * [[Actividad]]
 * [[Galeria]]
@@ -33,6 +34,12 @@ icon:: user
 type:: list
 color:: blue
 weight:: 100
+
+## NN Concept Definition: Contexto
+icon:: book-open
+type:: list
+color:: slate
+weight:: 90
 
 ## NN Concept Definition: Emprendimiento
 icon:: rocket
@@ -104,6 +111,16 @@ description:: Public location line.
 concept:: Perfil
 type:: string
 description:: ISO 8601 date of the last published change. Feeds dateModified and the sitemap lastmod.
+
+## NN Field Definition: titulo
+concept:: Contexto
+type:: string
+description:: Short label of the passage, used as a heading in the machine-readable file.
+
+## NN Field Definition: cuerpo
+concept:: Contexto
+type:: string
+description:: One self-contained paragraph explaining an aspect of the practice. Rendered only in llms-full.txt, never on the page.
 
 ## NN Field Definition: nombre
 concept:: Emprendimiento
@@ -184,6 +201,7 @@ site resolves to a field here.
 | Concept | Type | Purpose |
 |---|---|---|
 | **Perfil** | list | The person and their public positioning (exactly one element) |
+| **Contexto** | list | Machine-readable passages explaining the practice; never rendered on the page |
 | **Emprendimiento** | list | Ventures and companies, ordered by year |
 | **Actividad** | list | Professional activities carrying a quantitative claim |
 | **Galeria** | list | Embedded media collections (videos, photos) |
@@ -241,6 +259,27 @@ person named in `nombre`. Do not model private data: this document is published.
 ### Prompts
 - "Change the `titular` to a shorter positioning line."
 - "Add a second public contact channel."
+
+## Contexto
+
+### Summary
+Self-contained passages written for machine readers, not for the page.
+
+### Description
+Each element is one paragraph that answers a question an AI assistant might be asked
+about the person: what they do, how they started, what cogNNitive is, what the
+professional service delivers. Passages render only into `llms-full.txt`. They never
+appear in the HTML, so the public copy stays untouched.
+
+### Methodologies
+Write answer-first: the first sentence must stand alone and name the entity. Keep one
+idea per element, 40 to 90 words. Repeat the key entities (Inteligencia Artificial,
+adopción, conocimiento, trazabilidad) instead of stuffing keywords. Every number must
+be traceable to another concept in this model.
+
+### Prompts
+- "Add a passage explaining which companies this service is for."
+- "Rewrite the services passage to lead with the outcome."
 
 ## Emprendimiento
 

@@ -3,7 +3,7 @@ level: 3
 parent_spec:
   name: "personal-site_V_0-1-0"
   url: "specs/bluepriNNts/personal-site/spec_NN.md"
-knowledge_version: "V_0-1-8"
+knowledge_version: "V_0-1-9"
 title: "Personal Site"
 ---
 
@@ -20,6 +20,28 @@ linkedin:: https://es.linkedin.com/in/lucascervera
 foto:: assets/lucas.png
 ubicacion:: España
 actualizado:: 2026-11-17
+
+# NN Contexto
+
+## NN Contexto: QueHace
+slug:: quehace
+titulo:: Qué hace
+cuerpo:: Lucas Cervera es consultor, asesor y profesor especializado en Inteligencia Artificial e innovación. Ayuda a empresas a adoptar Inteligencia Artificial con criterio de negocio: identifica qué procesos conviene automatizar, decide qué casos de uso tienen retorno real y forma a los equipos para que sostengan el cambio sin depender de un proveedor externo.
+
+## NN Contexto: Trayectoria
+slug:: trayectoria
+titulo:: Cómo empezó
+cuerpo:: Empezó en 2004, cuando la Inteligencia Artificial todavía no era tema de conversación en las empresas, construyendo software. Desde 2021 la experimenta y la aplica a modelos de negocio. En ese recorrido fundó tres startups y una fundación, entre ellas nVotes, el software de votación usado por más de dos millones de personas.
+
+## NN Contexto: CogNNitive
+slug:: queescognnitive
+titulo:: Qué es cogNNitive
+cuerpo:: En 2026 fundó cogNNitive, un framework de gestión del conocimiento con Inteligencia Artificial. Convierte la información dispersa de una organización en una base de conocimiento estructurada, trazable y en Markdown plano, alojada en el repositorio Git de la propia organización. Las citas son deterministas y a nivel de sección, lo que permite a personas y agentes de IA trabajar sobre la misma fuente de verdad sin depender de un proveedor.
+
+## NN Contexto: Servicios
+slug:: servicios
+titulo:: Servicios profesionales
+cuerpo:: cogNNitive ofrece servicios profesionales de adopción de Inteligencia Artificial: no construye IA por la organización, le enseña a construir con ella. El trabajo termina con un mecanismo de adopción que sobrevive a cambios de personas y proyectos, el conocimiento interno convertido en base trazable, skills de agente construidos sobre flujos de trabajo reales y un equipo capaz de operar todo eso sin asistencia externa. El principio es capacidad, no dependencia.
 
 # NN Emprendimiento
 

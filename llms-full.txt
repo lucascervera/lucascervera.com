@@ -1,0 +1,56 @@
+# Lucas Cervera
+
+> Consultor, asesor y profesor especializado en Inteligencia Artificial e Innovación
+
+## Qué hace
+
+Lucas Cervera es consultor, asesor y profesor especializado en Inteligencia Artificial e innovación. Ayuda a empresas a adoptar Inteligencia Artificial con criterio de negocio: identifica qué procesos conviene automatizar, decide qué casos de uso tienen retorno real y forma a los equipos para que sostengan el cambio sin depender de un proveedor externo.
+
+## Cómo empezó
+
+Empezó en 2004, cuando la Inteligencia Artificial todavía no era tema de conversación en las empresas, construyendo software. Desde 2021 la experimenta y la aplica a modelos de negocio. En ese recorrido fundó tres startups y una fundación, entre ellas nVotes, el software de votación usado por más de dos millones de personas.
+
+## Qué es cogNNitive
+
+En 2026 fundó cogNNitive, un framework de gestión del conocimiento con Inteligencia Artificial. Convierte la información dispersa de una organización en una base de conocimiento estructurada, trazable y en Markdown plano, alojada en el repositorio Git de la propia organización. Las citas son deterministas y a nivel de sección, lo que permite a personas y agentes de IA trabajar sobre la misma fuente de verdad sin depender de un proveedor.
+
+## Servicios profesionales
+
+cogNNitive ofrece servicios profesionales de adopción de Inteligencia Artificial: no construye IA por la organización, le enseña a construir con ella. El trabajo termina con un mecanismo de adopción que sobrevive a cambios de personas y proyectos, el conocimiento interno convertido en base trazable, skills de agente construidos sobre flujos de trabajo reales y un equipo capaz de operar todo eso sin asistencia externa. El principio es capacidad, no dependencia.
+
+## Proyectos
+
+- **cogNNitive** (2026): Software de gestión de la información con IA. — https://cognnitive.com
+- **innV0** (2025): Plataforma especializada en la fase inicial del proceso de innovación. — https://innV0.com
+- **Impulsar.ai** (2023): Entrevistas a expertos en Inteligencia Artificial. — https://impulsar.ai
+- **Plastilinn** (2021): Modelado de negocios impulsado por Inteligencia Artificial. — https://plastilinn.com
+- **Innteresante** (2021): Divulgación de innovación e Inteligencia Artificial de forma simple y entretenida. — http://innteresante.com/
+- **nVotes** (2014): Software de votación segura en línea usado por más de 2 millones de votantes. — http://nvotes.com/
+- **Sonar Ventures** (2011): El primer Venture Builder de España. — https://www.crunchbase.com/organization/sonar-ventures
+- **Fundación Iniciador** (2007): Alrededor de 1000 charlas para emprendedores organizadas. — http://iniciador.com/
+- **metoCube** (2004): Software de documentación de procesos vendido a nivel mundial. — https://www.youtube.com/watch?v=Gs-u9KTFNYs
+
+## Actividades
+
+- **Comunicación y divulgación**: Divulgación sobre innovación, Inteligencia Artificial e IA aplicada en innteresante e impulsar.ai.
+- **Formación**: Docencia sobre innovación, tecnología y aplicación de Inteligencia Artificial a negocios. Horas de clase: 800 horas a 1800 estudiantes.
+- **Asesoramiento de startups**: Mentoría y acompañamiento a equipos fundadores en etapa temprana. Horas de mentoría: 2800 horas a 750 emprendedores.
+- **Conferencias**: Charlas y talleres sobre innovación, emprendimiento e Inteligencia Artificial. Charlas y talleres: 120 con más de 5000 asistentes.
+- **Medios**: Participación en televisión, radio y prensa como especialista en innovación e Inteligencia Artificial. Eventos con medios: Más de 100.
+
+## Galerías
+
+- **Videos**: Divulgación de innovación e Inteligencia Artificial en innteresante e impulsar.ai. — https://drive.google.com/drive/folders/1diGCwk93dDO-bQzlUU074Rc8FeACiPiR
+- **Fotos**: Charlas, talleres y eventos. — https://drive.google.com/drive/folders/1i5gF58MuRhwEacNkJK-iJq9YZfeOvEsu
+
+## Contacto
+
+- Email: lucas@lucascervera.com
+- LinkedIn: https://es.linkedin.com/in/lucascervera
+- Ubicación: España
+
+## Fuente y licencia
+
+Este documento se genera desde el modelo de conocimiento del dominio en https://lucascervera.com/kNNowledge/personal-site_NN.md.
+Última actualización: 2026-11-17.
+Licencia: CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/

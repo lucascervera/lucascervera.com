@@ -34,4 +34,5 @@ Fundador de 3 startups y 1 fundación en los campos de internet, software y empr
 
 ## Fuente
 Este contenido se genera desde el modelo de conocimiento del dominio en https://lucascervera.com/kNNowledge/personal-site_NN.md.
+Documento completo para máquinas: https://lucascervera.com/llms-full.txt
 Licencia: CC BY 4.0.

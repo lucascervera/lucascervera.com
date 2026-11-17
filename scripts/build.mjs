@@ -18,7 +18,7 @@ const MODEL_PATH = join(ROOT, "kNNowledge", "personal-site_NN.md");
 const DOMAIN = "https://lucascervera.com";
 const SITE_NAME = "Lucas Cervera";
 
-const CONCEPTS = ["Perfil", "Emprendimiento", "Actividad", "Galeria"];
+const CONCEPTS = ["Perfil", "Contexto", "Emprendimiento", "Actividad", "Galeria"];
 
 function parseArgs(argv) {
   const out = {};
@@ -106,6 +106,10 @@ export function requireModel(model) {
   for (const el of model.concepts.Galeria ?? []) {
     if (!el.fields.nombre) problems.push(`Galeria:${el.id} is missing nombre`);
     if (!safeUrl(el.fields.url)) problems.push(`Galeria:${el.id} is missing a valid http(s) url`);
+  }
+  for (const el of model.concepts.Contexto ?? []) {
+    if (!el.fields.titulo) problems.push(`Contexto:${el.id} is missing titulo`);
+    if (!el.fields.cuerpo) problems.push(`Contexto:${el.id} is missing cuerpo`);
   }
   if (problems.length) {
     throw new Error(`Model is not publishable:\n  - ${problems.join("\n  - ")}`);
@@ -533,6 +537,7 @@ ${galleries}
 
 ## Fuente
 Este contenido se genera desde el modelo de conocimiento del dominio en ${DOMAIN}/kNNowledge/personal-site_NN.md.
+Documento completo para máquinas: ${DOMAIN}/llms-full.txt
 Licencia: CC BY 4.0.
 `;
 }
@@ -553,6 +558,66 @@ const AI_AGENTS = [
   "meta-externalagent",
   "Bytespider",
 ];
+
+function renderLlmsFull(model) {
+  const p = model.concepts.Perfil[0].fields;
+  const contexto = (model.concepts.Contexto ?? [])
+    .map((el) => `## ${el.fields.titulo}\n\n${el.fields.cuerpo}`)
+    .join("\n\n");
+  const ventures = sortedVentures(model)
+    .map((el) => {
+      const f = el.fields;
+      const url = safeUrl(f.url);
+      return `- **${f.nombre}**${f.anio ? ` (${f.anio})` : ""}: ${f.descripcion ?? ""}${url ? ` — ${url}` : ""}`;
+    })
+    .join("\n");
+  const activities = (model.concepts.Actividad ?? [])
+    .map((el) => {
+      const f = el.fields;
+      const metric =
+        f.metrica_etiqueta && f.metrica_valor ? ` ${f.metrica_etiqueta}: ${f.metrica_valor}.` : "";
+      return `- **${f.nombre}**: ${f.descripcion ?? ""}${metric}`;
+    })
+    .join("\n");
+  const galleries = (model.concepts.Galeria ?? [])
+    .map((el) => {
+      const f = el.fields;
+      const url = safeUrl(f.url_externa) ?? safeUrl(f.url);
+      return `- **${f.nombre}**${f.descripcion ? `: ${f.descripcion}` : ""}${url ? ` — ${url}` : ""}`;
+    })
+    .join("\n");
+  const linkedin = safeUrl(p.linkedin);
+
+  return `# ${p.nombre}
+
+> ${p.titular}
+
+${contexto}
+
+## Proyectos
+
+${ventures}
+
+## Actividades
+
+${activities}
+
+## Galerías
+
+${galleries}
+
+## Contacto
+
+- Email: ${p.email}
+${linkedin ? `- LinkedIn: ${linkedin}\n` : ""}- Ubicación: ${p.ubicacion ?? "No declarada"}
+
+## Fuente y licencia
+
+Este documento se genera desde el modelo de conocimiento del dominio en ${DOMAIN}/kNNowledge/personal-site_NN.md.
+Última actualización: ${p.actualizado}.
+Licencia: CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/
+`;
+}
 
 function renderRobots() {
   const explicit = AI_AGENTS.map((agent) => `User-agent: ${agent}\nAllow: /`).join("\n\n");
@@ -590,6 +655,7 @@ export function build({ outDir = ROOT } = {}) {
     "robots.txt": renderRobots(),
     "sitemap.xml": renderSitemap(model),
     "llms.txt": renderLlms(model),
+    "llms-full.txt": renderLlmsFull(model),
   };
 
   for (const [relative, content] of Object.entries(files)) {

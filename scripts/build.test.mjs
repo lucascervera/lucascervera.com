@@ -12,15 +12,17 @@ function tmp(name) {
   return mkdtempSync(join(tmpdir(), `lucascervera-${name}-`));
 }
 
-test("the model declares the four concepts with the expected element counts", () => {
+test("the model declares the five concepts with the expected element counts", () => {
   const model = parseModel(MODEL);
   assert.deepEqual(Object.keys(model.concepts).sort(), [
     "Actividad",
+    "Contexto",
     "Emprendimiento",
     "Galeria",
     "Perfil",
   ]);
   assert.equal(model.concepts.Perfil.length, 1);
+  assert.equal(model.concepts.Contexto.length, 4);
   assert.equal(model.concepts.Emprendimiento.length, 9);
   assert.equal(model.concepts.Actividad.length, 5);
   assert.equal(model.concepts.Galeria.length, 2);
@@ -156,7 +158,7 @@ test("the page title stays short and the phrase is capitalised", () => {
     assert.ok(title.length > 0, "the page needs a title");
     assert.ok(title.length <= 70, `title is ${title.length} characters: ${title}`);
     assert.match(title, /Inteligencia Artificial|IA/, "the title must name the field");
-    for (const relative of ["index.html", "llms.txt"]) {
+    for (const relative of ["index.html", "llms.txt", "llms-full.txt"]) {
       const content = readFileSync(join(out, relative), "utf8");
       assert.doesNotMatch(
         content,
@@ -164,6 +166,33 @@ test("the page title stays short and the phrase is capitalised", () => {
         `${relative} still has the phrase in lowercase`,
       );
     }
+  } finally {
+    rmSync(out, { recursive: true, force: true });
+  }
+});
+
+test("the machine-readable dossier carries passages the page never shows", () => {
+  const out = tmp("llmsfull");
+  try {
+    const { files } = build({ outDir: out });
+    assert.ok(files.includes("llms-full.txt"), "the build must emit llms-full.txt");
+
+    const full = readFileSync(join(out, "llms-full.txt"), "utf8");
+    assert.match(full, /## Qué hace/);
+    assert.match(full, /## Cómo empezó/);
+    assert.match(full, /## Qué es cogNNitive/);
+    assert.match(full, /## Servicios profesionales/);
+    assert.match(full, /capacidad, no dependencia/i);
+    assert.match(full, /En 2026 fundó cogNNitive/);
+    assert.match(full, /empezó en 2004/i);
+
+    const html = readFileSync(join(out, "index.html"), "utf8");
+    assert.doesNotMatch(html, /capacidad, no dependencia/i, "machine-only copy leaked into the page");
+    assert.doesNotMatch(html, /## Servicios profesionales/, "the page must not render the dossier");
+    assert.doesNotMatch(html, /En 2026 fundó cogNNitive/, "the page must keep its own copy");
+
+    const index = readFileSync(join(out, "llms.txt"), "utf8");
+    assert.match(index, /llms-full\.txt/, "llms.txt must point at the full dossier");
   } finally {
     rmSync(out, { recursive: true, force: true });
   }
