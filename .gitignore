@@ -5,3 +5,6 @@
 # Build scratch
 /.scratch
 node_modules/
+
+# Domain console: generated on demand by nn-mcp, regenerable, 1.2 MB
+/domaiNN_console.html

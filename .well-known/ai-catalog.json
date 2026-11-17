@@ -12,12 +12,17 @@
     {
       "id": "trayectoria",
       "title": "Trayectoria",
-      "count": 8
+      "count": 9
     },
     {
       "id": "actividades",
       "title": "Actividades",
       "count": 5
+    },
+    {
+      "id": "galerias",
+      "title": "Galerías",
+      "count": 2
     },
     {
       "id": "recursos",

@@ -11,6 +11,7 @@ Fundador de 3 startups y 1 fundación en los campos de internet, software y empr
 - LinkedIn: https://es.linkedin.com/in/lucascervera
 
 ## Trayectoria
+- cogNNitive (2026): Desde septiembre de 2026. Framework de evolución del conocimiento que convierte información dispersa en una base estructurada y trazable en Markdown plano. — https://cognnitive.com
 - innV0 (2025): Plataforma especializada en la fase inicial del proceso de innovación. — https://innV0.com
 - Impulsar.ai (2023): Entrevistas a expertos en Inteligencia Artificial. — https://impulsar.ai
 - Plastilinn (2021): Modelado de negocios impulsado por Inteligencia Artificial. — https://plastilinn.com
@@ -26,6 +27,10 @@ Fundador de 3 startups y 1 fundación en los campos de internet, software y empr
 - Asesoramiento de startups: Mentoría y acompañamiento a equipos fundadores en etapa temprana. — Horas de mentoría: 2800 horas a 750 emprendedores
 - Conferencias: Charlas y talleres sobre innovación, emprendimiento e inteligencia artificial. — Charlas y talleres: 120 con más de 5000 asistentes
 - Medios: Participación en televisión, radio y prensa como especialista en innovación e inteligencia artificial. — Eventos con medios: Más de 100
+
+## Galerías
+- Videos: Divulgación de innovación e inteligencia artificial en innteresante e impulsar.ai. — https://drive.google.com/drive/folders/1diGCwk93dDO-bQzlUU074Rc8FeACiPiR
+- Fotos: Charlas, talleres y eventos. — https://drive.google.com/drive/folders/1i5gF58MuRhwEacNkJK-iJq9YZfeOvEsu
 
 ## Recursos
 - Plantilla de valoración de startups: Valoración 360º de tu startup. — https://docs.google.com/spreadsheets/d/1euUcKZveBOpPfgiHmbYm5b4IMxzWIvJetIe4GBdb4jM/edit?usp=sharing

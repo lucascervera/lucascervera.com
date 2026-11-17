@@ -24,6 +24,7 @@ relationship_types:
 * [[Perfil]]
 * [[Emprendimiento]]
 * [[Actividad]]
+* [[Galeria]]
 * [[Recurso]]
 
 # NN Concept Definition
@@ -45,6 +46,12 @@ icon:: activity
 type:: list
 color:: green
 weight:: 60
+
+## NN Concept Definition: Galeria
+icon:: images
+type:: list
+color:: rose
+weight:: 50
 
 ## NN Concept Definition: Recurso
 icon:: folder-open
@@ -156,6 +163,26 @@ type:: select
 options:: [plantilla, herramienta, articulo]
 description:: Kind of resource.
 
+## NN Field Definition: nombre
+concept:: Galeria
+type:: string
+description:: Public name of the gallery, also used as the section anchor.
+
+## NN Field Definition: descripcion
+concept:: Galeria
+type:: string
+description:: One-line description shown under the gallery heading.
+
+## NN Field Definition: url
+concept:: Galeria
+type:: string
+description:: Public URL of the media collection, embedded as-is in an iframe.
+
+## NN Field Definition: url_externa
+concept:: Galeria
+type:: string
+description:: Optional public URL offered as a "see all" link next to the embed.
+
 # NN Matrix Definition
 
 # Personal Site App
@@ -177,6 +204,7 @@ site resolves to a field here.
 | **Perfil** | list | The person and their public positioning (exactly one element) |
 | **Emprendimiento** | list | Ventures and companies, ordered by year |
 | **Actividad** | list | Professional activities carrying a quantitative claim |
+| **Galeria** | list | Embedded media collections (videos, photos) |
 | **Recurso** | list | Public templates and tools |
 
 ### Fields
@@ -267,6 +295,25 @@ number. Leave the metric empty rather than inventing one.
 ### Prompts
 - "Update the conferences metric to the current number."
 - "Add an activity for open source maintenance."
+
+## Galeria
+
+### Summary
+A media collection hosted outside the site, embedded whole.
+
+### Description
+One element per collection, rendered as a titled section with a lazy iframe and an
+optional external link. The element id becomes the section anchor, lowercased, so
+`Galeria: Videos` is reachable at `#videos` and old deep links keep working.
+
+### Methodologies
+Embed the canonical public URL of the collection, never a private or expiring link.
+The site stores no media: it only points at the host. Keep one element per collection
+so that a dead embed can be removed without touching the rest.
+
+### Prompts
+- "Add the photo gallery with its public URL."
+- "Replace the videos embed with the new folder link."
 
 ## Recurso
 

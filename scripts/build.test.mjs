@@ -12,17 +12,19 @@ function tmp(name) {
   return mkdtempSync(join(tmpdir(), `lucascervera-${name}-`));
 }
 
-test("the model declares the four concepts with the expected element counts", () => {
+test("the model declares the five concepts with the expected element counts", () => {
   const model = parseModel(MODEL);
   assert.deepEqual(Object.keys(model.concepts).sort(), [
     "Actividad",
     "Emprendimiento",
+    "Galeria",
     "Perfil",
     "Recurso",
   ]);
   assert.equal(model.concepts.Perfil.length, 1);
-  assert.equal(model.concepts.Emprendimiento.length, 8);
+  assert.equal(model.concepts.Emprendimiento.length, 9);
   assert.equal(model.concepts.Actividad.length, 5);
+  assert.equal(model.concepts.Galeria.length, 2);
   assert.equal(model.concepts.Recurso.length, 5);
 });
 
@@ -91,6 +93,28 @@ test("the generated site carries no legacy tooling", () => {
 test("an incomplete profile fails the build instead of publishing a broken page", () => {
   const broken = parseModel(`# NN Perfil\n\n## NN Perfil: nobody\nnombre:: Nadie\n`);
   assert.throws(() => requireModel(broken), /Perfil\.titular is required/);
+});
+
+test("galleries render as lazy iframes anchored by their element id", () => {
+  const out = tmp("gallery");
+  try {
+    build({ outDir: out });
+    const html = readFileSync(join(out, "index.html"), "utf8");
+    assert.match(html, /<section id="videos">/);
+    assert.match(html, /<section id="fotos">/);
+    assert.match(html, /href="#videos"/, "the nav must link to the videos anchor");
+    assert.match(html, /href="#fotos"/, "the nav must link to the photos anchor");
+
+    const iframes = [...html.matchAll(/<iframe[^>]*>/g)].map((m) => m[0]);
+    assert.equal(iframes.length, 2, "one iframe per gallery");
+    for (const frame of iframes) {
+      assert.match(frame, /loading="lazy"/, "embeds must not block the first paint");
+      assert.match(frame, /src="https:\/\/drive\.google\.com\/embeddedfolderview\?id=/, "the embed must point at the public Drive folder");
+      assert.match(frame, /title="/, "every iframe needs an accessible title");
+    }
+  } finally {
+    rmSync(out, { recursive: true, force: true });
+  }
 });
 
 test("every local reference in the published page resolves on disk", () => {

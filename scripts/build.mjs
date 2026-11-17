@@ -18,7 +18,7 @@ const MODEL_PATH = join(ROOT, "kNNowledge", "personal-site_NN.md");
 const DOMAIN = "https://lucascervera.com";
 const SITE_NAME = "Lucas Cervera";
 
-const CONCEPTS = ["Perfil", "Emprendimiento", "Actividad", "Recurso"];
+const CONCEPTS = ["Perfil", "Emprendimiento", "Actividad", "Galeria", "Recurso"];
 
 function parseArgs(argv) {
   const out = {};
@@ -103,6 +103,10 @@ export function requireModel(model) {
       if (!el.fields.nombre) problems.push(`${concept}:${el.id} is missing nombre`);
     }
   }
+  for (const el of model.concepts.Galeria ?? []) {
+    if (!el.fields.nombre) problems.push(`Galeria:${el.id} is missing nombre`);
+    if (!safeUrl(el.fields.url)) problems.push(`Galeria:${el.id} is missing a valid http(s) url`);
+  }
   if (problems.length) {
     throw new Error(`Model is not publishable:\n  - ${problems.join("\n  - ")}`);
   }
@@ -116,16 +120,41 @@ function sortedVentures(model) {
   });
 }
 
-function renderNav() {
-  return [
+function renderNav(model) {
+  const items = [
     ["#perfil", "Perfil"],
     ["#trayectoria", "Trayectoria"],
     ["#actividades", "Actividades"],
+    ...(model.concepts.Galeria ?? []).map((el) => [
+      `#${el.id.toLowerCase()}`,
+      el.fields.nombre,
+    ]),
     ["#recursos", "Recursos"],
     ["#contacto", "Contacto"],
-  ]
-    .map(([href, label]) => `<li><a href="${href}">${label}</a></li>`)
+  ];
+  return items
+    .map(([href, label]) => `<li><a href="${href}">${esc(label)}</a></li>`)
     .join("\n        ");
+}
+
+function renderGalleries(model) {
+  return (model.concepts.Galeria ?? [])
+    .map((el) => {
+      const f = el.fields;
+      const src = safeUrl(f.url);
+      const external = safeUrl(f.url_externa);
+      const anchor = el.id.toLowerCase();
+      const note = f.descripcion ? esc(f.descripcion) : "";
+      const seeAll = external
+        ? ` <a class="see-all" href="${esc(external)}" rel="noopener">Ver todas</a>`
+        : "";
+      return `    <section id="${esc(anchor)}">
+      <h2>${esc(f.nombre)}</h2>
+      <p class="section-note">${note}${seeAll}</p>
+      <div class="embed"><iframe src="${esc(src)}" title="${esc(f.nombre)}" loading="lazy" referrerpolicy="no-referrer"></iframe></div>
+    </section>`;
+    })
+    .join("\n\n");
 }
 
 function renderVentures(model) {
@@ -210,7 +239,7 @@ function renderHtml(model) {
     <nav aria-label="Principal">
       <a class="brand" href="/">${esc(perfil.nombre)}</a>
       <ul>
-        ${renderNav()}
+        ${renderNav(model)}
       </ul>
     </nav>
   </header>
@@ -239,6 +268,8 @@ ${renderVentures(model)}
 ${renderActivities(model)}
       </ul>
     </section>
+
+${renderGalleries(model)}
 
     <section id="recursos">
       <h2>Recursos</h2>
@@ -401,6 +432,21 @@ h3 { font-size: 1.05rem; }
 .resource a { font-weight: 600; }
 .resource p { margin: 0; color: var(--muted); font-size: 0.95rem; }
 
+.section-note { margin: -1rem 0 1.5rem; color: var(--muted); font-size: 0.95rem; max-width: 62ch; }
+.see-all { white-space: nowrap; }
+.embed {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+}
+.embed iframe {
+  display: block;
+  width: 100%;
+  height: min(70vh, 600px);
+  border: 0;
+}
+
 #contacto p { margin: 0 0 0.5rem; font-size: 1.05rem; }
 
 .site-footer {
@@ -445,6 +491,14 @@ function renderLlms(model) {
     })
     .join("\n");
 
+  const galleries = (model.concepts.Galeria ?? [])
+    .map((el) => {
+      const f = el.fields;
+      const url = safeUrl(f.url_externa) ?? safeUrl(f.url);
+      return `- ${f.nombre}${f.descripcion ? `: ${f.descripcion}` : ""}${url ? ` — ${url}` : ""}`;
+    })
+    .join("\n");
+
   return `# ${perfil.nombre}
 
 > ${perfil.titular}
@@ -462,6 +516,9 @@ ${ventures}
 
 ## Actividades
 ${activities}
+
+## Galerías
+${galleries}
 
 ## Recursos
 ${resources}
@@ -484,6 +541,7 @@ function renderCatalog(model) {
       { id: "perfil", title: "Perfil" },
       { id: "trayectoria", title: "Trayectoria", count: (model.concepts.Emprendimiento ?? []).length },
       { id: "actividades", title: "Actividades", count: (model.concepts.Actividad ?? []).length },
+      { id: "galerias", title: "Galerías", count: (model.concepts.Galeria ?? []).length },
       { id: "recursos", title: "Recursos", count: (model.concepts.Recurso ?? []).length },
       { id: "contacto", title: "Contacto" },
     ],

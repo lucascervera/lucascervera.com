@@ -135,6 +135,21 @@ h3 { font-size: 1.05rem; }
 .resource a { font-weight: 600; }
 .resource p { margin: 0; color: var(--muted); font-size: 0.95rem; }
 
+.section-note { margin: -1rem 0 1.5rem; color: var(--muted); font-size: 0.95rem; max-width: 62ch; }
+.see-all { white-space: nowrap; }
+.embed {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+}
+.embed iframe {
+  display: block;
+  width: 100%;
+  height: min(70vh, 600px);
+  border: 0;
+}
+
 #contacto p { margin: 0 0 0.5rem; font-size: 1.05rem; }
 
 .site-footer {

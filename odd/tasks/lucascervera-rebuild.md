@@ -22,6 +22,8 @@ Branch: `feat/rebuild-from-domain` · Delivery: `single-pr` · Test runner: `nod
 | T4 | S5 | inline | done | `scripts/build.mjs` + `scripts/build.test.mjs`, 8/8 `node --test`; byte-identical across two runs |
 | T5 | S4, S7 | inline | done | `index.html`, `assets/site.css`, `assets/lucas.png`, `robots.txt`, `sitemap.xml`, `llms.txt`, `.well-known/ai-catalog.json` |
 | T6 | S1, S6 | inline | done | no Tailwind/Docsify/Logseq strings; all local refs resolve; `check_domain` 0 invalid, provenance ok, layout ok |
+| T7 | S2, S4 | inline | done | `Galeria` concept + 2 elements (Videos, Fotos); lazy iframes; anchors `#videos`/`#fotos` restore the old deep links |
+| T8 | S2 | inline | done | `Emprendimiento: cogNNitive` (2026) renders first in Trayectoria |
 | T7 | S3 | deferred | pending | delete `legacy/` only after the new site is live |
 
 ## Log
