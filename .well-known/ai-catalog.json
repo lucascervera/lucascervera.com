@@ -1,0 +1,37 @@
+{
+  "name": "Lucas Cervera",
+  "url": "https://lucascervera.com/",
+  "type": "personal-profile",
+  "description": "Fundador de 3 startups y 1 fundación en los campos de internet, software y emprendimiento. Actualmente enfocado en innovación y en la aplicación de Inteligencia Artificial a modelos de negocio.",
+  "language": "es",
+  "sections": [
+    {
+      "id": "perfil",
+      "title": "Perfil"
+    },
+    {
+      "id": "trayectoria",
+      "title": "Trayectoria",
+      "count": 8
+    },
+    {
+      "id": "actividades",
+      "title": "Actividades",
+      "count": 5
+    },
+    {
+      "id": "recursos",
+      "title": "Recursos",
+      "count": 5
+    },
+    {
+      "id": "contacto",
+      "title": "Contacto"
+    }
+  ],
+  "source": {
+    "model": "kNNowledge/personal-site_NN.md",
+    "format": "iNNfo Level 3"
+  },
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+}

@@ -1,0 +1,287 @@
+---
+spec_version: "V_0-6-0"
+spec_url: "specs/bluepriNNts/personal-site/spec_NN.md"
+level: 2
+parent_spec:
+  name: "iNNfo_V_0-6-0"
+  url: "https://raw.githubusercontent.com/cogNNitive/cogNNitive-web/main/iNNfo/specs/iNNfo_V_0-6-0_NN.md"
+blueprint_version: "V_0-1-0"
+title: "Personal Site App"
+relationship_types:
+  hierarchy:
+    enabled: true
+    via: "index block"
+  evaluable_matrix:
+    enabled: false
+  graph_edge:
+    enabled: false
+  sequence:
+    enabled: false
+---
+
+# NN index
+
+* [[Perfil]]
+* [[Emprendimiento]]
+* [[Actividad]]
+* [[Recurso]]
+
+# NN Concept Definition
+
+## NN Concept Definition: Perfil
+icon:: user
+type:: list
+color:: blue
+weight:: 100
+
+## NN Concept Definition: Emprendimiento
+icon:: rocket
+type:: list
+color:: indigo
+weight:: 80
+
+## NN Concept Definition: Actividad
+icon:: activity
+type:: list
+color:: green
+weight:: 60
+
+## NN Concept Definition: Recurso
+icon:: folder-open
+type:: list
+color:: amber
+weight:: 40
+
+# NN Field Definition
+
+## NN Field Definition: tags
+concept:: *
+type:: select
+multiple:: true
+description:: Open vocabulary ad-hoc tags and classification labels.
+
+## NN Field Definition: nombre
+concept:: Perfil
+type:: string
+description:: Full public name.
+
+## NN Field Definition: titular
+concept:: Perfil
+type:: string
+description:: One-line professional positioning shown under the name.
+
+## NN Field Definition: resumen
+concept:: Perfil
+type:: string
+description:: Short professional summary.
+
+## NN Field Definition: email
+concept:: Perfil
+type:: string
+description:: Public contact email.
+
+## NN Field Definition: linkedin
+concept:: Perfil
+type:: string
+description:: Public LinkedIn profile URL.
+
+## NN Field Definition: foto
+concept:: Perfil
+type:: image
+description:: Portrait image used in the hero section.
+
+## NN Field Definition: ubicacion
+concept:: Perfil
+type:: string
+description:: Public location line.
+
+## NN Field Definition: nombre
+concept:: Emprendimiento
+type:: string
+description:: Public name of the venture.
+
+## NN Field Definition: anio
+concept:: Emprendimiento
+type:: string
+description:: Year the venture started.
+
+## NN Field Definition: descripcion
+concept:: Emprendimiento
+type:: string
+description:: One-line description shown on the card.
+
+## NN Field Definition: url
+concept:: Emprendimiento
+type:: string
+description:: Public website of the venture.
+
+## NN Field Definition: nombre
+concept:: Actividad
+type:: string
+description:: Public name of the activity.
+
+## NN Field Definition: descripcion
+concept:: Actividad
+type:: string
+description:: What the activity consists of.
+
+## NN Field Definition: metrica_etiqueta
+concept:: Actividad
+type:: string
+description:: Label of the quantitative claim, for example hours of teaching.
+
+## NN Field Definition: metrica_valor
+concept:: Actividad
+type:: string
+description:: Numeric value of the claim, including its unit.
+
+## NN Field Definition: nombre
+concept:: Recurso
+type:: string
+description:: Public name of the resource.
+
+## NN Field Definition: descripcion
+concept:: Recurso
+type:: string
+description:: What the resource is useful for.
+
+## NN Field Definition: url
+concept:: Recurso
+type:: string
+description:: Public link to the resource.
+
+## NN Field Definition: tipo
+concept:: Recurso
+type:: select
+options:: [plantilla, herramienta, articulo]
+description:: Kind of resource.
+
+# NN Matrix Definition
+
+# Personal Site App
+
+## A domain for a one-page professional site
+
+## Philosophy
+
+The site is a projection of this model, never the opposite. Editing the published HTML
+creates a second source of truth and is therefore forbidden. Every visible string on the
+site resolves to a field here.
+
+## Specification
+
+### Concepts
+
+| Concept | Type | Purpose |
+|---|---|---|
+| **Perfil** | list | The person and their public positioning (exactly one element) |
+| **Emprendimiento** | list | Ventures and companies, ordered by year |
+| **Actividad** | list | Professional activities carrying a quantitative claim |
+| **Recurso** | list | Public templates and tools |
+
+### Fields
+
+See the `# NN Field Definition` section above. Every field is `string` unless declared otherwise.
+
+### Matrices
+
+None. There is no N:M relationship in this domain; forcing one would be ceremony without meaning.
+
+### Relationship Types
+
+| Type | Enabled | Representation |
+|---|---|---|
+| Hierarchy | yes | index block (wikilinks) |
+| Evaluable matrix | no | Not applicable |
+| Graph edge | no | Not applicable |
+| Sequence | no | Not applicable |
+
+## Template
+
+### Level 3 Model Template
+
+```yaml
+---
+level: 3
+parent_spec:
+  name: "personal-site_V_0-1-0"
+  url: "specs/bluepriNNts/personal-site/spec_NN.md"
+knowledge_version: "V_x-y-z"
+title: "Personal Site"
+---
+```
+
+Then one `# NN <Concept>` section per concept, with one `## NN <Concept>: <ElementId>`
+block per element and one `key:: value` line per declared field.
+
+# Concept Guidance Documentation
+
+## Perfil
+
+### Summary
+The public identity of the site owner. Exactly one element must exist.
+
+### Description
+Holds the name, positioning line, summary, contact channels, portrait and location.
+Every field here is rendered in the hero or contact section of the generated site.
+
+### Methodologies
+Derive the content from a public CV or resume, and keep every claim verifiable by the
+person named in `nombre`. Do not model private data: this document is published.
+
+### Prompts
+- "Change the `titular` to a shorter positioning line."
+- "Add a second public contact channel."
+
+## Emprendimiento
+
+### Summary
+A venture, company or project the person founded or co-founded.
+
+### Description
+One element per venture, ordered chronologically by `anio`. The generated site renders
+them as cards sorted by year, newest first, and links `url` when present.
+
+### Methodologies
+Record only ventures with a public reference. `descripcion` is one sentence and states
+what the venture does, not what it achieved.
+
+### Prompts
+- "Add the new venture with its year and URL."
+- "Shorten the description of innV0 to a single line."
+
+## Actividad
+
+### Summary
+A professional activity carrying a quantitative claim.
+
+### Description
+Each element names an activity and optionally pairs it with `metrica_etiqueta` and
+`metrica_valor`. The generated site renders the label and value as a highlight when both
+are present, and as plain prose when they are absent.
+
+### Methodologies
+Keep the metric honest and rounded: state the measurement basis in the label, not in the
+number. Leave the metric empty rather than inventing one.
+
+### Prompts
+- "Update the conferences metric to the current number."
+- "Add an activity for open source maintenance."
+
+## Recurso
+
+### Summary
+A public template, tool or article shared by the person.
+
+### Description
+One element per resource, with a link and a `tipo` from the declared vocabulary. The
+generated site groups resources by kind when more than one kind exists.
+
+### Methodologies
+Link only resources that are publicly reachable. Prefer a stable short URL over a
+tracking-heavy one.
+
+### Prompts
+- "Add a new template and mark its type."
+- "Remove the resource whose link is dead."
+

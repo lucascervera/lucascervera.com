@@ -1,0 +1,39 @@
+# Lucas Cervera
+
+> Emprendedor | Asesor | Profesor especializado en inteligencia artificial e innovación
+
+Fundador de 3 startups y 1 fundación en los campos de internet, software y emprendimiento. Actualmente enfocado en innovación y en la aplicación de Inteligencia Artificial a modelos de negocio.
+
+## Perfil
+- Nombre: Lucas Cervera
+- Ubicación: España
+- Email: lucas@lucascervera.com
+- LinkedIn: https://es.linkedin.com/in/lucascervera
+
+## Trayectoria
+- innV0 (2025): Plataforma especializada en la fase inicial del proceso de innovación. — https://innV0.com
+- Impulsar.ai (2023): Entrevistas a expertos en Inteligencia Artificial. — https://impulsar.ai
+- Plastilinn (2021): Modelado de negocios impulsado por Inteligencia Artificial. — https://plastilinn.com
+- Innteresante (2021): Divulgación de innovación e inteligencia artificial de forma simple y entretenida. — http://innteresante.com/
+- nVotes (2014): Software de votación segura en línea usado por más de 2 millones de votantes. — http://nvotes.com/
+- Sonar Ventures (2011): El primer Venture Builder de España. — https://www.crunchbase.com/organization/sonar-ventures
+- Fundación Iniciador (2007): Alrededor de 1000 charlas para emprendedores organizadas. — http://iniciador.com/
+- metoCube (2004): Software de documentación de procesos vendido a nivel mundial. — https://www.youtube.com/watch?v=Gs-u9KTFNYs
+
+## Actividades
+- Comunicación y divulgación: Divulgación sobre innovación, inteligencia artificial e IA aplicada en innteresante e impulsar.ai.
+- Formación: Docencia sobre innovación, tecnología y aplicación de inteligencia artificial a negocios. — Horas de clase: 800 horas a 1800 estudiantes
+- Asesoramiento de startups: Mentoría y acompañamiento a equipos fundadores en etapa temprana. — Horas de mentoría: 2800 horas a 750 emprendedores
+- Conferencias: Charlas y talleres sobre innovación, emprendimiento e inteligencia artificial. — Charlas y talleres: 120 con más de 5000 asistentes
+- Medios: Participación en televisión, radio y prensa como especialista en innovación e inteligencia artificial. — Eventos con medios: Más de 100
+
+## Recursos
+- Plantilla de valoración de startups: Valoración 360º de tu startup. — https://docs.google.com/spreadsheets/d/1euUcKZveBOpPfgiHmbYm5b4IMxzWIvJetIe4GBdb4jM/edit?usp=sharing
+- Plantilla de Lean Canvas: Creada en 2011 y utilizada por miles de emprendedores. — http://bit.ly/22IbD1h
+- Plantilla de Box Canvas: Versión simplificada del Lean Canvas. — https://docs.google.com/drawings/d/1nfEoOPbPC1z4-91gQbKNOmVn36IpSAT-LgyLnZbA62o/edit?usp=sharing
+- Herramienta de naming para startups: Encuentra el nombre perfecto para tu startup. — https://docs.google.com/spreadsheets/d/1KOiSPOmuKIPb2ZKQFuBNmb94e2ll2CQY8zIucCsF7jo/
+- sheet2web: Publica los datos de una hoja de cálculo como un directorio web. — https://github.com/lucascervera/sheet2web
+
+## Fuente
+Este contenido se genera desde el modelo de conocimiento del dominio en https://lucascervera.com/kNNowledge/personal-site_NN.md.
+Licencia: CC BY 4.0.
