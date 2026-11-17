@@ -3,7 +3,7 @@ level: 3
 parent_spec:
   name: "personal-site_V_0-1-0"
   url: "specs/bluepriNNts/personal-site/spec_NN.md"
-knowledge_version: "V_0-1-1"
+knowledge_version: "V_0-1-2"
 title: "Personal Site"
 ---
 
@@ -134,40 +134,3 @@ nombre:: Fotos
 descripcion:: Charlas, talleres y eventos.
 url:: https://drive.google.com/embeddedfolderview?id=1i5gF58MuRhwEacNkJK-iJq9YZfeOvEsu#grid
 url_externa:: https://drive.google.com/drive/folders/1i5gF58MuRhwEacNkJK-iJq9YZfeOvEsu
-
-# NN Recurso
-
-## NN Recurso: PlantillaValoracion
-slug:: plantillavaloracion
-nombre:: Plantilla de valoración de startups
-descripcion:: Valoración 360º de tu startup.
-url:: https://docs.google.com/spreadsheets/d/1euUcKZveBOpPfgiHmbYm5b4IMxzWIvJetIe4GBdb4jM/edit?usp=sharing
-tipo:: plantilla
-
-## NN Recurso: PlantillaLeanCanvas
-slug:: plantillaleancanvas
-nombre:: Plantilla de Lean Canvas
-descripcion:: Creada en 2011 y utilizada por miles de emprendedores.
-url:: http://bit.ly/22IbD1h
-tipo:: plantilla
-
-## NN Recurso: PlantillaBoxCanvas
-slug:: plantillaboxcanvas
-nombre:: Plantilla de Box Canvas
-descripcion:: Versión simplificada del Lean Canvas.
-url:: https://docs.google.com/drawings/d/1nfEoOPbPC1z4-91gQbKNOmVn36IpSAT-LgyLnZbA62o/edit?usp=sharing
-tipo:: plantilla
-
-## NN Recurso: HerramientaNaming
-slug:: herramientanaming
-nombre:: Herramienta de naming para startups
-descripcion:: Encuentra el nombre perfecto para tu startup.
-url:: https://docs.google.com/spreadsheets/d/1KOiSPOmuKIPb2ZKQFuBNmb94e2ll2CQY8zIucCsF7jo/
-tipo:: herramienta
-
-## NN Recurso: Sheet2Web
-slug:: sheet2web
-nombre:: sheet2web
-descripcion:: Publica los datos de una hoja de cálculo como un directorio web.
-url:: https://github.com/lucascervera/sheet2web
-tipo:: herramienta

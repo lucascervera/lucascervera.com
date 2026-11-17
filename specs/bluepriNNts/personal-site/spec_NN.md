@@ -25,7 +25,6 @@ relationship_types:
 * [[Emprendimiento]]
 * [[Actividad]]
 * [[Galeria]]
-* [[Recurso]]
 
 # NN Concept Definition
 
@@ -52,12 +51,6 @@ icon:: images
 type:: list
 color:: rose
 weight:: 50
-
-## NN Concept Definition: Recurso
-icon:: folder-open
-type:: list
-color:: amber
-weight:: 40
 
 # NN Field Definition
 
@@ -143,27 +136,6 @@ type:: string
 description:: Numeric value of the claim, including its unit.
 
 ## NN Field Definition: nombre
-concept:: Recurso
-type:: string
-description:: Public name of the resource.
-
-## NN Field Definition: descripcion
-concept:: Recurso
-type:: string
-description:: What the resource is useful for.
-
-## NN Field Definition: url
-concept:: Recurso
-type:: string
-description:: Public link to the resource.
-
-## NN Field Definition: tipo
-concept:: Recurso
-type:: select
-options:: [plantilla, herramienta, articulo]
-description:: Kind of resource.
-
-## NN Field Definition: nombre
 concept:: Galeria
 type:: string
 description:: Public name of the gallery, also used as the section anchor.
@@ -205,7 +177,6 @@ site resolves to a field here.
 | **Emprendimiento** | list | Ventures and companies, ordered by year |
 | **Actividad** | list | Professional activities carrying a quantitative claim |
 | **Galeria** | list | Embedded media collections (videos, photos) |
-| **Recurso** | list | Public templates and tools |
 
 ### Fields
 
@@ -314,21 +285,4 @@ so that a dead embed can be removed without touching the rest.
 ### Prompts
 - "Add the photo gallery with its public URL."
 - "Replace the videos embed with the new folder link."
-
-## Recurso
-
-### Summary
-A public template, tool or article shared by the person.
-
-### Description
-One element per resource, with a link and a `tipo` from the declared vocabulary. The
-generated site groups resources by kind when more than one kind exists.
-
-### Methodologies
-Link only resources that are publicly reachable. Prefer a stable short URL over a
-tracking-heavy one.
-
-### Prompts
-- "Add a new template and mark its type."
-- "Remove the resource whose link is dead."
 

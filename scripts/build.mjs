@@ -18,7 +18,7 @@ const MODEL_PATH = join(ROOT, "kNNowledge", "personal-site_NN.md");
 const DOMAIN = "https://lucascervera.com";
 const SITE_NAME = "Lucas Cervera";
 
-const CONCEPTS = ["Perfil", "Emprendimiento", "Actividad", "Galeria", "Recurso"];
+const CONCEPTS = ["Perfil", "Emprendimiento", "Actividad", "Galeria"];
 
 function parseArgs(argv) {
   const out = {};
@@ -98,7 +98,7 @@ export function requireModel(model) {
   for (const key of ["nombre", "titular", "resumen", "email"]) {
     if (!p[key]) problems.push(`Perfil.${key} is required`);
   }
-  for (const concept of ["Emprendimiento", "Actividad", "Recurso"]) {
+  for (const concept of ["Emprendimiento", "Actividad"]) {
     for (const el of model.concepts[concept] ?? []) {
       if (!el.fields.nombre) problems.push(`${concept}:${el.id} is missing nombre`);
     }
@@ -129,10 +129,8 @@ function renderNav(model) {
       `#${el.id.toLowerCase()}`,
       el.fields.nombre,
     ]),
-    ["#recursos", "Recursos"],
     ["#contacto", "Contacto"],
-  ];
-  return items
+  ];  return items
     .map(([href, label]) => `<li><a href="${href}">${esc(label)}</a></li>`)
     .join("\n        ");
 }
@@ -190,21 +188,6 @@ function renderActivities(model) {
           </div>
           ${metric}
         </li>`;
-    })
-    .join("\n");
-}
-
-function renderResources(model) {
-  return (model.concepts.Recurso ?? [])
-    .map((el) => {
-      const f = el.fields;
-      const url = safeUrl(f.url);
-      const name = url
-        ? `<a href="${esc(url)}" rel="noopener">${esc(f.nombre)}</a>`
-        : esc(f.nombre);
-      const kind = f.tipo ? `<span class="kind">${esc(f.tipo)}</span>` : "";
-      const desc = f.descripcion ? `<p>${esc(f.descripcion)}</p>` : "";
-      return `        <li class="resource">${kind}${name}${desc}</li>`;
     })
     .join("\n");
 }
@@ -270,13 +253,6 @@ ${renderActivities(model)}
     </section>
 
 ${renderGalleries(model)}
-
-    <section id="recursos">
-      <h2>Recursos</h2>
-      <ul class="resources">
-${renderResources(model)}
-      </ul>
-    </section>
 
     <section id="contacto">
       <h2>Contacto</h2>
@@ -417,21 +393,6 @@ h3 { font-size: 1.05rem; }
 .metric-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
 .metric-value { font-size: 1.15rem; font-weight: 650; color: var(--ink); }
 
-.resources { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
-.resource { display: grid; gap: 0.2rem; }
-.resource .kind {
-  justify-self: start;
-  font-size: 0.68rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 0.1rem 0.5rem;
-}
-.resource a { font-weight: 600; }
-.resource p { margin: 0; color: var(--muted); font-size: 0.95rem; }
-
 .section-note { margin: -1rem 0 1.5rem; color: var(--muted); font-size: 0.95rem; max-width: 62ch; }
 .see-all { white-space: nowrap; }
 .embed {
@@ -483,14 +444,6 @@ function renderLlms(model) {
       return `- ${f.nombre}${f.descripcion ? `: ${f.descripcion}` : ""}${metric}`;
     })
     .join("\n");
-  const resources = (model.concepts.Recurso ?? [])
-    .map((el) => {
-      const f = el.fields;
-      const url = safeUrl(f.url);
-      return `- ${f.nombre}${f.descripcion ? `: ${f.descripcion}` : ""}${url ? ` — ${url}` : ""}`;
-    })
-    .join("\n");
-
   const galleries = (model.concepts.Galeria ?? [])
     .map((el) => {
       const f = el.fields;
@@ -520,9 +473,6 @@ ${activities}
 ## Galerías
 ${galleries}
 
-## Recursos
-${resources}
-
 ## Fuente
 Este contenido se genera desde el modelo de conocimiento del dominio en ${DOMAIN}/kNNowledge/personal-site_NN.md.
 Licencia: CC BY 4.0.
@@ -542,7 +492,6 @@ function renderCatalog(model) {
       { id: "trayectoria", title: "Trayectoria", count: (model.concepts.Emprendimiento ?? []).length },
       { id: "actividades", title: "Actividades", count: (model.concepts.Actividad ?? []).length },
       { id: "galerias", title: "Galerías", count: (model.concepts.Galeria ?? []).length },
-      { id: "recursos", title: "Recursos", count: (model.concepts.Recurso ?? []).length },
       { id: "contacto", title: "Contacto" },
     ],
     source: {

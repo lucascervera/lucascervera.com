@@ -24,6 +24,7 @@ Branch: `feat/rebuild-from-domain` · Delivery: `single-pr` · Test runner: `nod
 | T6 | S1, S6 | inline | done | no Tailwind/Docsify/Logseq strings; all local refs resolve; `check_domain` 0 invalid, provenance ok, layout ok |
 | T7 | S2, S4 | inline | done | `Galeria` concept + 2 elements (Videos, Fotos); lazy iframes; anchors `#videos`/`#fotos` restore the old deep links |
 | T8 | S2 | inline | done | `Emprendimiento: cogNNitive` (2026) renders first in Trayectoria |
+| T9 | S2, S4 | inline | done | `Recurso` removed from the app, the model, the projector and the CSS; a guard test asserts its absence |
 | T7 | S3 | deferred | pending | delete `legacy/` only after the new site is live |
 
 ## Log
@@ -37,3 +38,9 @@ Branch: `feat/rebuild-from-domain` · Delivery: `single-pr` · Test runner: `nod
 **L3 — Evidence gathered.** `cogNNitive/cogNNitive-web` is documented as "Generated output only — do not hand-edit", produced from a private monorepo via `scripts/build-docs.mjs`. Installed locally: `nn-innfo` V_0-5-14, `nn-preflight` V_0-2-5, `nn-site-generator` V_0-2-0, `nn-design-presets`. `nn-site-generator` has no coupling to `*_NN.md`, so the model→site projection must be written here (T4) rather than assumed.
 
 **L4 — Decision.** Same repo, no new remote. Branch-first to protect the live `main`. Root stays the Pages source; `legacy/` is quarantined by move, not by copy, so there is one copy of the truth per generation.
+
+**L5 — Media galleries.** Added a `Galeria` concept with two elements (Videos, Fotos), embedded as lazy iframes. Element ids are lowercased into section anchors, so `#videos` and `#fotos` restore the deep links the previous site exposed.
+
+**L6 — cogNNitive venture.** Added `Emprendimiento: cogNNitive` (2026). The `anio` field stays numeric for ordering; "desde septiembre" lives in the description.
+
+**L7 — Recursos removed.** User decision: drop the section entirely. Removed the concept, its four field definitions, the five elements, the projector function, the nav entry, the llms.txt and catalog entries, and the dead CSS. A guard test fails if `Recursos` reappears in any generated file.

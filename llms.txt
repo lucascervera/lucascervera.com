@@ -32,13 +32,6 @@ Fundador de 3 startups y 1 fundación en los campos de internet, software y empr
 - Videos: Divulgación de innovación e inteligencia artificial en innteresante e impulsar.ai. — https://drive.google.com/drive/folders/1diGCwk93dDO-bQzlUU074Rc8FeACiPiR
 - Fotos: Charlas, talleres y eventos. — https://drive.google.com/drive/folders/1i5gF58MuRhwEacNkJK-iJq9YZfeOvEsu
 
-## Recursos
-- Plantilla de valoración de startups: Valoración 360º de tu startup. — https://docs.google.com/spreadsheets/d/1euUcKZveBOpPfgiHmbYm5b4IMxzWIvJetIe4GBdb4jM/edit?usp=sharing
-- Plantilla de Lean Canvas: Creada en 2011 y utilizada por miles de emprendedores. — http://bit.ly/22IbD1h
-- Plantilla de Box Canvas: Versión simplificada del Lean Canvas. — https://docs.google.com/drawings/d/1nfEoOPbPC1z4-91gQbKNOmVn36IpSAT-LgyLnZbA62o/edit?usp=sharing
-- Herramienta de naming para startups: Encuentra el nombre perfecto para tu startup. — https://docs.google.com/spreadsheets/d/1KOiSPOmuKIPb2ZKQFuBNmb94e2ll2CQY8zIucCsF7jo/
-- sheet2web: Publica los datos de una hoja de cálculo como un directorio web. — https://github.com/lucascervera/sheet2web
-
 ## Fuente
 Este contenido se genera desde el modelo de conocimiento del dominio en https://lucascervera.com/kNNowledge/personal-site_NN.md.
 Licencia: CC BY 4.0.

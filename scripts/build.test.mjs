@@ -12,20 +12,18 @@ function tmp(name) {
   return mkdtempSync(join(tmpdir(), `lucascervera-${name}-`));
 }
 
-test("the model declares the five concepts with the expected element counts", () => {
+test("the model declares the four concepts with the expected element counts", () => {
   const model = parseModel(MODEL);
   assert.deepEqual(Object.keys(model.concepts).sort(), [
     "Actividad",
     "Emprendimiento",
     "Galeria",
     "Perfil",
-    "Recurso",
   ]);
   assert.equal(model.concepts.Perfil.length, 1);
   assert.equal(model.concepts.Emprendimiento.length, 9);
   assert.equal(model.concepts.Actividad.length, 5);
   assert.equal(model.concepts.Galeria.length, 2);
-  assert.equal(model.concepts.Recurso.length, 5);
 });
 
 test("every element carries the fields its concept requires", () => {
@@ -34,7 +32,7 @@ test("every element carries the fields its concept requires", () => {
   for (const key of ["nombre", "titular", "resumen", "email", "linkedin", "foto"]) {
     assert.ok(perfil[key], `Perfil.${key} must be present`);
   }
-  for (const concept of ["Emprendimiento", "Actividad", "Recurso"]) {
+  for (const concept of ["Emprendimiento", "Actividad"]) {
     for (const element of model.concepts[concept]) {
       assert.ok(element.fields.nombre, `${concept}:${element.id} is missing nombre`);
     }
@@ -111,6 +109,20 @@ test("galleries render as lazy iframes anchored by their element id", () => {
       assert.match(frame, /loading="lazy"/, "embeds must not block the first paint");
       assert.match(frame, /src="https:\/\/drive\.google\.com\/embeddedfolderview\?id=/, "the embed must point at the public Drive folder");
       assert.match(frame, /title="/, "every iframe needs an accessible title");
+    }
+  } finally {
+    rmSync(out, { recursive: true, force: true });
+  }
+});
+
+test("the Recursos section is gone from every generated output", () => {
+  const out = tmp("no-recursos");
+  try {
+    const { files } = build({ outDir: out });
+    for (const relative of files) {
+      const content = readFileSync(join(out, relative), "utf8");
+      assert.doesNotMatch(content, /id="recursos"/, `${relative} still renders the section`);
+      assert.doesNotMatch(content, /Recursos/, `${relative} still mentions Recursos`);
     }
   } finally {
     rmSync(out, { recursive: true, force: true });
