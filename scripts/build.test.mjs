@@ -1,7 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { mkdtempSync, readFileSync, rmSync } from "node:fs";
-import { tmpdir } from "node:os";
+import { existsSync, mkdtempSync, readFileSync, rmSync } from "node:fs";import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { build, parseModel, requireModel } from "./build.mjs";
@@ -92,4 +91,22 @@ test("the generated site carries no legacy tooling", () => {
 test("an incomplete profile fails the build instead of publishing a broken page", () => {
   const broken = parseModel(`# NN Perfil\n\n## NN Perfil: nobody\nnombre:: Nadie\n`);
   assert.throws(() => requireModel(broken), /Perfil\.titular is required/);
+});
+
+test("every local reference in the published page resolves on disk", () => {
+  const html = readFileSync(join(ROOT, "index.html"), "utf8");
+  const refs = [...html.matchAll(/(?:src|href)="([^"#]+)"/g)]
+    .map((match) => match[1])
+    .filter((url) => !/^(https?:|mailto:|data:|\/)/.test(url));
+  assert.ok(refs.length > 0, "the page must reference at least one local asset");
+  for (const ref of refs) {
+    assert.ok(existsSync(join(ROOT, ref)), `${ref} is referenced by index.html but missing on disk`);
+  }
+});
+
+test("the AI catalog is valid JSON that points at the model", () => {
+  const catalog = JSON.parse(readFileSync(join(ROOT, ".well-known", "ai-catalog.json"), "utf8"));
+  assert.equal(catalog.url, "https://lucascervera.com/");
+  assert.equal(catalog.source.model, "kNNowledge/personal-site_NN.md");
+  assert.ok(Array.isArray(catalog.sections) && catalog.sections.length >= 5);
 });

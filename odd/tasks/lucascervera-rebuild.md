@@ -18,10 +18,10 @@ Branch: `feat/rebuild-from-domain` · Delivery: `single-pr` · Test runner: `nod
 |----|------|-------|--------|----------|
 | T1 | S3 | inline | done | `git mv` of site files into `legacy/`; `.gitignore` updated to `/legacy/logseq` |
 | T2 | S2 | inline | done | canonical domaiNN scaffold at root (`kNNowledge/`, `sources/`, `artifacts/`, `changes/`, `procedures/`, `staging/`, `specs/bluepriNNts/`), `domaiNN_NN.md` manifest, `.gitattributes` `* -text`; `nn-preflight` exit 0 |
-| T3 | S2, S4 | inline | pending | `kNNowledge/` model with Person, Venture, Activity, Metric, Resource |
-| T4 | S5 | inline | pending | `scripts/build.mjs` + `node --test` |
-| T5 | S4, S7 | inline | pending | generated `index.html`, `assets/`, AI-readiness files |
-| T6 | S1, S6 | inline | pending | local serve + link check + determinism check |
+| T3 | S2, S4 | inline | done | `specs/bluepriNNts/personal-site/spec_NN.md` (valid, 0 warnings) + `kNNowledge/personal-site_NN.md` (valid; 1 element Perfil, 8 Emprendimiento, 5 Actividad, 5 Recurso) |
+| T4 | S5 | inline | done | `scripts/build.mjs` + `scripts/build.test.mjs`, 8/8 `node --test`; byte-identical across two runs |
+| T5 | S4, S7 | inline | done | `index.html`, `assets/site.css`, `assets/lucas.png`, `robots.txt`, `sitemap.xml`, `llms.txt`, `.well-known/ai-catalog.json` |
+| T6 | S1, S6 | inline | done | no Tailwind/Docsify/Logseq strings; all local refs resolve; `check_domain` 0 invalid, provenance ok, layout ok |
 | T7 | S3 | deferred | pending | delete `legacy/` only after the new site is live |
 
 ## Log
