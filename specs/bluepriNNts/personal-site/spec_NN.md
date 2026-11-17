@@ -100,6 +100,11 @@ concept:: Perfil
 type:: string
 description:: Public location line.
 
+## NN Field Definition: actualizado
+concept:: Perfil
+type:: string
+description:: ISO 8601 date of the last published change. Feeds dateModified and the sitemap lastmod.
+
 ## NN Field Definition: nombre
 concept:: Emprendimiento
 type:: string

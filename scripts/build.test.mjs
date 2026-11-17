@@ -29,7 +29,7 @@ test("the model declares the four concepts with the expected element counts", ()
 test("every element carries the fields its concept requires", () => {
   const model = parseModel(MODEL);
   const perfil = model.concepts.Perfil[0].fields;
-  for (const key of ["nombre", "titular", "resumen", "email", "linkedin", "foto"]) {
+  for (const key of ["nombre", "titular", "resumen", "email", "linkedin", "foto", "actualizado"]) {
     assert.ok(perfil[key], `Perfil.${key} must be present`);
   }
   for (const concept of ["Emprendimiento", "Actividad"]) {
@@ -180,9 +180,73 @@ test("every local reference in the published page resolves on disk", () => {
   }
 });
 
-test("the AI catalog is valid JSON that points at the model", () => {
-  const catalog = JSON.parse(readFileSync(join(ROOT, ".well-known", "ai-catalog.json"), "utf8"));
-  assert.equal(catalog.url, "https://lucascervera.com/");
-  assert.equal(catalog.source.model, "kNNowledge/personal-site_NN.md");
-  assert.ok(Array.isArray(catalog.sections) && catalog.sections.length >= 5);
+test("the page exposes Person and WebSite structured data", () => {
+  const out = tmp("jsonld");
+  try {
+    build({ outDir: out });
+    const html = readFileSync(join(out, "index.html"), "utf8");
+    const block = /<script type="application\/ld\+json">([\s\S]*?)<\/script>/.exec(html);
+    assert.ok(block, "the page must carry a JSON-LD block");
+    const data = JSON.parse(block[1]);
+    assert.equal(data["@context"], "https://schema.org");
+    assert.deepEqual(
+      data["@graph"].map((node) => node["@type"]),
+      ["Person", "WebSite"],
+    );
+    const person = data["@graph"][0];
+    assert.equal(person.name, "Lucas Cervera");
+    assert.match(person.jobTitle, /Inteligencia Artificial/);
+    assert.ok(person.sameAs.includes("https://es.linkedin.com/in/lucascervera"));
+    assert.ok(person.knowsAbout.some((topic) => /Inteligencia Artificial/.test(topic)));
+    assert.equal(person.image, "https://lucascervera.com/assets/lucas.png");
+    assert.equal(data["@graph"][1].dateModified, "2026-11-17");
+  } finally {
+    rmSync(out, { recursive: true, force: true });
+  }
+});
+
+test("robots.txt welcomes every crawler and forbids nothing", () => {
+  const out = tmp("robots");
+  try {
+    build({ outDir: out });
+    const robots = readFileSync(join(out, "robots.txt"), "utf8");
+    for (const agent of [
+      "GPTBot",
+      "OAI-SearchBot",
+      "ClaudeBot",
+      "Claude-SearchBot",
+      "PerplexityBot",
+      "Google-Extended",
+      "CCBot",
+    ]) {
+      assert.match(robots, new RegExp(`User-agent: ${agent}\\nAllow: /`), `${agent} must be allowed`);
+    }
+    assert.doesNotMatch(robots, /Disallow/i, "nothing may be disallowed");
+    assert.match(robots, /Sitemap: https:\/\/lucascervera\.com\/sitemap\.xml/);
+  } finally {
+    rmSync(out, { recursive: true, force: true });
+  }
+});
+
+test("the sitemap carries the model's last-modified date", () => {
+  const out = tmp("lastmod");
+  try {
+    build({ outDir: out });
+    const xml = readFileSync(join(out, "sitemap.xml"), "utf8");
+    assert.match(xml, /<lastmod>2026-11-17<\/lastmod>/);
+  } finally {
+    rmSync(out, { recursive: true, force: true });
+  }
+});
+
+test("the page exposes an Open Graph image", () => {
+  const out = tmp("og");
+  try {
+    build({ outDir: out });
+    const html = readFileSync(join(out, "index.html"), "utf8");
+    assert.match(html, /<meta property="og:image" content="https:\/\/lucascervera\.com\/assets\/lucas\.png" \/>/);
+    assert.match(html, /<meta name="twitter:card" content="summary" \/>/);
+  } finally {
+    rmSync(out, { recursive: true, force: true });
+  }
 });

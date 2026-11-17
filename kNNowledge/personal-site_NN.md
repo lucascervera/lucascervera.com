@@ -3,7 +3,7 @@ level: 3
 parent_spec:
   name: "personal-site_V_0-1-0"
   url: "specs/bluepriNNts/personal-site/spec_NN.md"
-knowledge_version: "V_0-1-7"
+knowledge_version: "V_0-1-8"
 title: "Personal Site"
 ---
 
@@ -19,6 +19,7 @@ email:: lucas@lucascervera.com
 linkedin:: https://es.linkedin.com/in/lucascervera
 foto:: assets/lucas.png
 ubicacion:: España
+actualizado:: 2026-11-17
 
 # NN Emprendimiento
 

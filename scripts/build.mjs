@@ -95,7 +95,7 @@ export function requireModel(model) {
   const perfil = model.concepts.Perfil ?? [];
   if (perfil.length !== 1) problems.push(`Perfil must have exactly one element, found ${perfil.length}`);
   const p = perfil[0]?.fields ?? {};
-  for (const key of ["nombre", "titular", "resumen", "email"]) {
+  for (const key of ["nombre", "titular", "resumen", "email", "actualizado"]) {
     if (!p[key]) problems.push(`Perfil.${key} is required`);
   }
   for (const concept of ["Emprendimiento", "Actividad"]) {
@@ -118,6 +118,52 @@ function sortedVentures(model) {
     const yb = Number.parseInt(b.fields.anio ?? "0", 10) || 0;
     return yb - ya;
   });
+}
+
+function renderJsonLd(model) {
+  const p = model.concepts.Perfil[0].fields;
+  const ventures = sortedVentures(model).filter((el) => safeUrl(el.fields.url));
+  const sameAs = [safeUrl(p.linkedin), "https://github.com/lucascervera", "https://cognnitive.com"].filter(
+    (value, index, list) => value && list.indexOf(value) === index,
+  );
+
+  const person = {
+    "@type": "Person",
+    "@id": `${DOMAIN}/#person`,
+    name: p.nombre,
+    jobTitle: p.titular,
+    description: p.resumen,
+    url: `${DOMAIN}/`,
+    knowsAbout: [
+      "Inteligencia Artificial",
+      "Innovación",
+      "Adopción de Inteligencia Artificial en negocios",
+      "Transformación digital",
+      "Modelos de negocio",
+      "Emprendimiento",
+    ],
+    sameAs,
+    founds: ventures.map((el) => ({
+      "@type": "Organization",
+      name: el.fields.nombre,
+      url: safeUrl(el.fields.url),
+    })),
+  };
+  if (p.foto) person.image = `${DOMAIN}/${String(p.foto).replace(/^\/+/, "")}`;
+  if (p.email) person.email = `mailto:${p.email}`;
+  if (p.ubicacion) person.address = { "@type": "PostalAddress", addressCountry: "ES" };
+
+  const website = {
+    "@type": "WebSite",
+    "@id": `${DOMAIN}/#website`,
+    url: `${DOMAIN}/`,
+    name: p.nombre,
+    inLanguage: "es",
+    publisher: { "@id": `${DOMAIN}/#person` },
+  };
+  if (p.actualizado) website.dateModified = p.actualizado;
+
+  return JSON.stringify({ "@context": "https://schema.org", "@graph": [person, website] }, null, 2);
 }
 
 function renderNav(model) {
@@ -195,7 +241,15 @@ function renderActivities(model) {
 function renderHtml(model) {
   const perfil = model.concepts.Perfil[0].fields;
   const shortTitle = (perfil.titular_corto ?? perfil.titular.split("|")[0]).trim();
+  const jsonLd = renderJsonLd(model).replace(/</g, "\\u003c");
   const foto = perfil.foto ? `assets/${esc(String(perfil.foto).replace(/^assets\//, ""))}` : "";
+  const ogImage = perfil.foto ? `${DOMAIN}/${String(perfil.foto).replace(/^\/+/, "")}` : null;
+  const ogImageTags = ogImage
+    ? `  <meta property="og:image" content="${esc(ogImage)}" />
+  <meta property="og:image:alt" content="Retrato de ${esc(perfil.nombre)}" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="${esc(ogImage)}" />`
+    : "";
   const linkedin = safeUrl(perfil.linkedin);
   const favicon =
     "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141414'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='28' fill='%23fbfaf8' text-anchor='middle'%3ELC%3C/text%3E%3C/svg%3E";
@@ -212,9 +266,13 @@ function renderHtml(model) {
   <meta property="og:title" content="${esc(perfil.nombre)}" />
   <meta property="og:description" content="${esc(perfil.resumen)}" />
   <meta property="og:url" content="${DOMAIN}/" />
+${ogImageTags}
   <link rel="canonical" href="${DOMAIN}/" />
   <link rel="icon" href="${favicon}" />
   <link rel="stylesheet" href="assets/site.css" />
+  <script type="application/ld+json">
+${jsonLd}
+  </script>
 </head>
 <body>
   <a class="skip" href="#contenido">Saltar al contenido</a>
@@ -479,39 +537,44 @@ Licencia: CC BY 4.0.
 `;
 }
 
-function renderCatalog(model) {
-  const perfil = model.concepts.Perfil[0].fields;
-  const catalog = {
-    name: perfil.nombre,
-    url: `${DOMAIN}/`,
-    type: "personal-profile",
-    description: perfil.resumen,
-    language: "es",
-    sections: [
-      { id: "perfil", title: "Perfil" },
-      { id: "proyectos", title: "Proyectos", count: (model.concepts.Emprendimiento ?? []).length },
-      { id: "actividades", title: "Actividades", count: (model.concepts.Actividad ?? []).length },
-      { id: "galerias", title: "Galerías", count: (model.concepts.Galeria ?? []).length },
-      { id: "contacto", title: "Contacto" },
-    ],
-    source: {
-      model: "kNNowledge/personal-site_NN.md",
-      format: "iNNfo Level 3",
-    },
-    license: "https://creativecommons.org/licenses/by/4.0/",
-  };
-  return `${JSON.stringify(catalog, null, 2)}\n`;
-}
+const AI_AGENTS = [
+  "GPTBot",
+  "OAI-SearchBot",
+  "ChatGPT-User",
+  "ClaudeBot",
+  "Claude-SearchBot",
+  "Claude-User",
+  "PerplexityBot",
+  "Perplexity-User",
+  "Google-Extended",
+  "CCBot",
+  "Applebot-Extended",
+  "Amazonbot",
+  "meta-externalagent",
+  "Bytespider",
+];
 
 function renderRobots() {
-  return `User-agent: *\nAllow: /\n\nSitemap: ${DOMAIN}/sitemap.xml\n`;
+  const explicit = AI_AGENTS.map((agent) => `User-agent: ${agent}\nAllow: /`).join("\n\n");
+  return `# This site is a public professional profile: every crawler is welcome.
+# Training and retrieval crawlers are both allowed on purpose.
+
+User-agent: *
+Allow: /
+
+${explicit}
+
+Sitemap: ${DOMAIN}/sitemap.xml
+`;
 }
 
-function renderSitemap() {
+function renderSitemap(model) {
+  const updated = model.concepts.Perfil[0].fields.actualizado;
+  const lastmod = updated ? `\n    <lastmod>${esc(updated)}</lastmod>` : "";
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>${DOMAIN}/</loc>
+    <loc>${DOMAIN}/</loc>${lastmod}
   </url>
 </urlset>
 `;
@@ -525,9 +588,8 @@ export function build({ outDir = ROOT } = {}) {
     "index.html": renderHtml(model),
     "assets/site.css": renderCss(),
     "robots.txt": renderRobots(),
-    "sitemap.xml": renderSitemap(),
+    "sitemap.xml": renderSitemap(model),
     "llms.txt": renderLlms(model),
-    ".well-known/ai-catalog.json": renderCatalog(model),
   };
 
   for (const [relative, content] of Object.entries(files)) {
