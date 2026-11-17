@@ -1,0 +1,38 @@
+# Lucas Cervera
+
+> Consultor, asesor y profesor especializado en Inteligencia Artificial e Innovación
+
+Fundador de 3 startups y 1 fundación en los campos de internet, software y emprendimiento. Actualmente enfocado en innovación y en la aplicación de Inteligencia Artificial a modelos de negocio.
+
+## Perfil
+- Nombre: Lucas Cervera
+- Ubicación: España
+- Email: lucas@lucascervera.com
+- LinkedIn: https://es.linkedin.com/in/lucascervera
+
+## Proyectos
+- cogNNitive (2026): Software de gestión de la información con IA. — https://cognnitive.com
+- innV0 (2025): Plataforma especializada en la fase inicial del proceso de innovación. — https://innV0.com
+- Impulsar.ai (2023): Entrevistas a expertos en Inteligencia Artificial. — https://impulsar.ai
+- Plastilinn (2021): Modelado de negocios impulsado por Inteligencia Artificial. — https://plastilinn.com
+- Innteresante (2021): Divulgación de innovación e Inteligencia Artificial de forma simple y entretenida. — http://innteresante.com/
+- nVotes (2014): Software de votación segura en línea usado por más de 2 millones de votantes. — http://nvotes.com/
+- Sonar Ventures (2011): El primer Venture Builder de España. — https://www.crunchbase.com/organization/sonar-ventures
+- Fundación Iniciador (2007): Alrededor de 1000 charlas para emprendedores organizadas. — http://iniciador.com/
+- metoCube (2004): Software de documentación de procesos vendido a nivel mundial. — https://www.youtube.com/watch?v=Gs-u9KTFNYs
+
+## Actividades
+- Comunicación y divulgación: Divulgación sobre innovación, Inteligencia Artificial e IA aplicada en innteresante e impulsar.ai.
+- Formación: Docencia sobre innovación, tecnología y aplicación de Inteligencia Artificial a negocios. — Horas de clase: 800 horas a 1800 estudiantes
+- Asesoramiento de startups: Mentoría y acompañamiento a equipos fundadores en etapa temprana. — Horas de mentoría: 2800 horas a 750 emprendedores
+- Conferencias: Charlas y talleres sobre innovación, emprendimiento e Inteligencia Artificial. — Charlas y talleres: 120 con más de 5000 asistentes
+- Medios: Participación en televisión, radio y prensa como especialista en innovación e Inteligencia Artificial. — Eventos con medios: Más de 100
+
+## Galerías
+- Videos: Divulgación de innovación e Inteligencia Artificial en innteresante e impulsar.ai. — https://drive.google.com/drive/folders/1diGCwk93dDO-bQzlUU074Rc8FeACiPiR
+- Fotos: Charlas, talleres y eventos. — https://drive.google.com/drive/folders/1i5gF58MuRhwEacNkJK-iJq9YZfeOvEsu
+
+## Fuente
+Este contenido se genera desde el modelo de conocimiento del dominio en https://lucascervera.com/kNNowledge/personal-site_NN.md.
+Documento completo para máquinas: https://lucascervera.com/llms-full.txt
+Licencia: CC BY 4.0.
