@@ -3,7 +3,7 @@ level: 3
 parent_spec:
   name: "personal-site_V_0-1-0"
   url: "specs/bluepriNNts/personal-site/spec_NN.md"
-knowledge_version: "V_0-1-9"
+knowledge_version: "V_0-1-10"
 title: "Personal Site"
 ---
 
@@ -31,7 +31,7 @@ cuerpo:: Lucas Cervera es consultor, asesor y profesor especializado en Intelige
 ## NN Contexto: Trayectoria
 slug:: trayectoria
 titulo:: Cómo empezó
-cuerpo:: Empezó en 2004, cuando la Inteligencia Artificial todavía no era tema de conversación en las empresas, construyendo software. Desde 2021 la experimenta y la aplica a modelos de negocio. En ese recorrido fundó tres startups y una fundación, entre ellas nVotes, el software de votación usado por más de dos millones de personas.
+cuerpo:: En 2021 reconoce el potencial de esta nueva ola de Inteligencia Artificial y apuesta por especializarse en ella, mucho antes de que comenzara su popularidad actual. Fue un pionero en experimentar y aplicar Inteligencia Artificial en el ámbito del diseño de modelos de negocio. A lo largo de su carrera fundó tres startups y una fundación, entre ellas nVotes, el software de votación usado por más de dos millones de personas.
 
 ## NN Contexto: CogNNitive
 slug:: queescognnitive

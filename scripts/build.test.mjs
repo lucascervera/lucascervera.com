@@ -184,7 +184,8 @@ test("the machine-readable dossier carries passages the page never shows", () =>
     assert.match(full, /## Servicios profesionales/);
     assert.match(full, /capacidad, no dependencia/i);
     assert.match(full, /En 2026 fundó cogNNitive/);
-    assert.match(full, /empezó en 2004/i);
+    assert.match(full, /En 2021 reconoce el potencial/);
+    assert.doesNotMatch(full, /Empezó en 2004/);
 
     const html = readFileSync(join(out, "index.html"), "utf8");
     assert.doesNotMatch(html, /capacidad, no dependencia/i, "machine-only copy leaked into the page");
