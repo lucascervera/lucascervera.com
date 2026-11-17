@@ -3,7 +3,7 @@ level: 3
 parent_spec:
   name: "personal-site_V_0-1-0"
   url: "specs/bluepriNNts/personal-site/spec_NN.md"
-knowledge_version: "V_0-1-6"
+knowledge_version: "V_0-1-7"
 title: "Personal Site"
 ---
 
@@ -12,7 +12,7 @@ title: "Personal Site"
 ## NN Perfil: LucasCervera
 slug:: lucascervera
 nombre:: Lucas Cervera
-titular:: Consultor, asesor y profesor especializado en Inteligencia Artificial e innovación
+titular:: Consultor, asesor y profesor especializado en Inteligencia Artificial e Innovación
 titular_corto:: Consultor, asesor y profesor de IA
 resumen:: Fundador de 3 startups y 1 fundación en los campos de internet, software y emprendimiento. Actualmente enfocado en innovación y en la aplicación de Inteligencia Artificial a modelos de negocio.
 email:: lucas@lucascervera.com

@@ -359,7 +359,6 @@ h3 { font-size: 1.05rem; }
   aspect-ratio: 1;
   object-fit: cover;
   border-radius: var(--radius);
-  border: 1px solid var(--line);
 }
 .headline { font-size: clamp(1.1rem, 2.4vw, 1.45rem); margin: 1rem 0 1.25rem; }
 .summary { color: var(--muted); max-width: 60ch; margin: 0 0 1rem; }
