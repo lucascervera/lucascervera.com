@@ -1,7 +1,3 @@
-# Legacy quarry: Logseq graph internals are not part of the published site
-/legacy/logseq
-/legacy/assets/DALL·E 2024-05-17 21.14.08 - Create a simpler logo for an application called 'Logsify' with a transparent background. The logo should represent a markdown document published on th.webp
-
 # Build scratch
 /.scratch
 node_modules/
