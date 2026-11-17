@@ -147,6 +147,28 @@ test("the projects section is labelled Proyectos everywhere", () => {
   }
 });
 
+test("the page title stays short and the phrase is capitalised", () => {
+  const out = tmp("headline");
+  try {
+    build({ outDir: out });
+    const html = readFileSync(join(out, "index.html"), "utf8");
+    const title = /<title>(.*?)<\/title>/.exec(html)?.[1] ?? "";
+    assert.ok(title.length > 0, "the page needs a title");
+    assert.ok(title.length <= 70, `title is ${title.length} characters: ${title}`);
+    assert.match(title, /Inteligencia Artificial|IA/, "the title must name the field");
+    for (const relative of ["index.html", "llms.txt"]) {
+      const content = readFileSync(join(out, relative), "utf8");
+      assert.doesNotMatch(
+        content,
+        /inteligencia artificial/,
+        `${relative} still has the phrase in lowercase`,
+      );
+    }
+  } finally {
+    rmSync(out, { recursive: true, force: true });
+  }
+});
+
 test("every local reference in the published page resolves on disk", () => {
   const html = readFileSync(join(ROOT, "index.html"), "utf8");
   const refs = [...html.matchAll(/(?:src|href)="([^"#]+)"/g)]

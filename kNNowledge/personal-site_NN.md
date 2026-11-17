@@ -3,7 +3,7 @@ level: 3
 parent_spec:
   name: "personal-site_V_0-1-0"
   url: "specs/bluepriNNts/personal-site/spec_NN.md"
-knowledge_version: "V_0-1-4"
+knowledge_version: "V_0-1-6"
 title: "Personal Site"
 ---
 
@@ -12,7 +12,8 @@ title: "Personal Site"
 ## NN Perfil: LucasCervera
 slug:: lucascervera
 nombre:: Lucas Cervera
-titular:: Asesor | Profesor especializado en inteligencia artificial e innovación
+titular:: Consultor, asesor y profesor especializado en Inteligencia Artificial e innovación
+titular_corto:: Consultor, asesor y profesor de IA
 resumen:: Fundador de 3 startups y 1 fundación en los campos de internet, software y emprendimiento. Actualmente enfocado en innovación y en la aplicación de Inteligencia Artificial a modelos de negocio.
 email:: lucas@lucascervera.com
 linkedin:: https://es.linkedin.com/in/lucascervera
@@ -53,7 +54,7 @@ url:: https://plastilinn.com
 slug:: innteresante
 nombre:: Innteresante
 anio:: 2021
-descripcion:: Divulgación de innovación e inteligencia artificial de forma simple y entretenida.
+descripcion:: Divulgación de innovación e Inteligencia Artificial de forma simple y entretenida.
 url:: http://innteresante.com/
 
 ## NN Emprendimiento: nVotes
@@ -89,12 +90,12 @@ url:: https://www.youtube.com/watch?v=Gs-u9KTFNYs
 ## NN Actividad: Comunicacion
 slug:: comunicacion
 nombre:: Comunicación y divulgación
-descripcion:: Divulgación sobre innovación, inteligencia artificial e IA aplicada en innteresante e impulsar.ai.
+descripcion:: Divulgación sobre innovación, Inteligencia Artificial e IA aplicada en innteresante e impulsar.ai.
 
 ## NN Actividad: Formacion
 slug:: formacion
 nombre:: Formación
-descripcion:: Docencia sobre innovación, tecnología y aplicación de inteligencia artificial a negocios.
+descripcion:: Docencia sobre innovación, tecnología y aplicación de Inteligencia Artificial a negocios.
 metrica_etiqueta:: Horas de clase
 metrica_valor:: 800 horas a 1800 estudiantes
 
@@ -108,14 +109,14 @@ metrica_valor:: 2800 horas a 750 emprendedores
 ## NN Actividad: Conferencias
 slug:: conferencias
 nombre:: Conferencias
-descripcion:: Charlas y talleres sobre innovación, emprendimiento e inteligencia artificial.
+descripcion:: Charlas y talleres sobre innovación, emprendimiento e Inteligencia Artificial.
 metrica_etiqueta:: Charlas y talleres
 metrica_valor:: 120 con más de 5000 asistentes
 
 ## NN Actividad: Medios
 slug:: medios
 nombre:: Medios
-descripcion:: Participación en televisión, radio y prensa como especialista en innovación e inteligencia artificial.
+descripcion:: Participación en televisión, radio y prensa como especialista en innovación e Inteligencia Artificial.
 metrica_etiqueta:: Eventos con medios
 metrica_valor:: Más de 100
 
@@ -124,7 +125,7 @@ metrica_valor:: Más de 100
 ## NN Galeria: Videos
 slug:: videos
 nombre:: Videos
-descripcion:: Divulgación de innovación e inteligencia artificial en innteresante e impulsar.ai.
+descripcion:: Divulgación de innovación e Inteligencia Artificial en innteresante e impulsar.ai.
 url:: https://drive.google.com/embeddedfolderview?id=1diGCwk93dDO-bQzlUU074Rc8FeACiPiR#grid
 url_externa:: https://drive.google.com/drive/folders/1diGCwk93dDO-bQzlUU074Rc8FeACiPiR
 

@@ -70,6 +70,11 @@ concept:: Perfil
 type:: string
 description:: One-line professional positioning shown under the name.
 
+## NN Field Definition: titular_corto
+concept:: Perfil
+type:: string
+description:: Short headline used for the page title and social cards. At most 60 characters.
+
 ## NN Field Definition: resumen
 concept:: Perfil
 type:: string

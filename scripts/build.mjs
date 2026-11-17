@@ -194,6 +194,7 @@ function renderActivities(model) {
 
 function renderHtml(model) {
   const perfil = model.concepts.Perfil[0].fields;
+  const shortTitle = (perfil.titular_corto ?? perfil.titular.split("|")[0]).trim();
   const foto = perfil.foto ? `assets/${esc(String(perfil.foto).replace(/^assets\//, ""))}` : "";
   const linkedin = safeUrl(perfil.linkedin);
   const favicon =
@@ -204,7 +205,7 @@ function renderHtml(model) {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>${esc(perfil.nombre)} — ${esc(perfil.titular.split("|")[0].trim())}</title>
+  <title>${esc(perfil.nombre)} — ${esc(shortTitle)}</title>
   <meta name="description" content="${esc(perfil.resumen)}" />
   <meta name="author" content="${esc(perfil.nombre)}" />
   <meta property="og:type" content="profile" />
